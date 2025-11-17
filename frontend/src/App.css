@@ -1,0 +1,386 @@
+/* Base Styles */
+:root {
+  --primary: #4a90e2;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+  --success: #4CAF50;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.logout-btn {
+  background: var(--danger);
+  color: white;
+}
+
+/* Sections */
+.section {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Email List */
+.email-list {
+  display: grid;
+  gap: 15px;
+}
+
+.email-card {
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--gray);
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.email-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.email-card.spam {
+  border-left-color: var(--danger);
+}
+
+.email-card.ham {
+  border-left-color: var(--success);
+}
+
+.sender {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.email-body {
+  margin: 10px 0;
+  white-space: pre-wrap;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Analysis Results */
+.analysis-results {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--light-gray);
+}
+
+.probability-bars {
+  margin: 15px 0;
+}
+
+.probability-bar {
+  margin-bottom: 10px;
+}
+
+.bar-container {
+  height: 8px;
+  background: var(--light-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar.spam {
+  background: var(--danger);
+}
+
+.bar.ham {
+  background: var(--success);
+}
+
+.warning-message {
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.warning-message.high {
+  background: #fff5f5;
+  color: var(--danger);
+  border-left: 3px solid var(--danger);
+  padding-left: 15px;
+}
+
+/* Suspicious Links */
+.suspicious-links {
+  margin-top: 15px;
+}
+
+.suspicious-links h4 {
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+.link-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.link-button:hover {
+  background: #e9ecef;
+  text-decoration: none;
+}
+
+/* Report Box */
+.report-box {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.report-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.stat-card .spam {
+  color: var(--danger);
+}
+
+.stat-card .ham {
+  color: var(--success);
+}
+
+.stat-card .phishing {
+  color: var(--warning);
+}
+
+/* Keywords */
+.keywords-section {
+  margin-top: 20px;
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.keyword-tag {
+  background: #e9ecef;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.keyword-tag .count {
+  color: var(--gray);
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+
+/* Text Area */
+.text-area-container {
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid #e1e4e8;
+}
+
+.text-area-container.high {
+  border-color: var(--danger);
+}
+
+.email-input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 200px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.email-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Loader */
+.loader {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+  
+  .report-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .email-input {
+    min-height: 150px;
+  }
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+/* Analysis Result */
+.analysis-result {
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  background: #f8f9fa;
+  border-left: 4px solid var(--success);
+}
+
+.analysis-result.high {
+  border-left-color: var(--danger);
+  background: #fff5f5;
+}
+
+.result-header {
+  margin-bottom: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .link-buttons {
+    flex-direction: column;
+  }
+  
+  .link-button {
+    width: 100%;
+    text-align: center;
+  }
+}
