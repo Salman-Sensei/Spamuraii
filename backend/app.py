@@ -16,6 +16,8 @@ import googleapiclient.discovery
 
 from utils.preprocess import clean_email
 from utils.phishing import detect_phishing_indicators
+from utils.url_guard import classify_url
+from utils.url_features import URLFeatureExtractor
 
 # local modules (relative imports)
 from offline_mode import analyze_email_offline
@@ -111,7 +113,7 @@ def oauth2callback():
     session.pop("state", None)
 
     # redirect back to frontend (your frontend runs on 3001)
-    return redirect("http://localhost:3001")
+    return redirect("http://localhost:3000")
 
 # =================== EMAIL FETCH & ANALYSIS ===================
 @app.route("/api/emails", methods=["GET"])
@@ -119,10 +121,18 @@ def get_emails():
     if "credentials" not in session:
         return jsonify({"error": "Not authenticated"}), 401
 
+    # Optional limit parameter for how many emails to fetch
+    try:
+        limit = int(request.args.get("limit", 10))
+    except (TypeError, ValueError):
+        limit = 10
+    # keep limit within a reasonable safe range
+    limit = max(1, min(limit, 100))
+
     creds = google.oauth2.credentials.Credentials(**session["credentials"])
     try:
         service = googleapiclient.discovery.build("gmail", "v1", credentials=creds)
-        messages_resp = service.users().messages().list(userId="me", maxResults=10).execute()
+        messages_resp = service.users().messages().list(userId="me", maxResults=limit).execute()
         messages = messages_resp.get("messages", []) or []
     except Exception as e:
         return jsonify({"error": f"Failed to fetch emails: {str(e)}"}), 500
@@ -211,6 +221,17 @@ def export_pdf_route():
 def logout():
     session.clear()
     return jsonify({"message": "Logged out"})
+
+
+@app.route("/api/url_offline", methods=["POST"])
+def url_offline():
+    data = request.get_json(force=True)
+    url = data.get("url", "")
+    if not url:
+        return jsonify({"error": "No url provided"}), 400
+
+    result = classify_url(url)
+    return jsonify(result)
 
 if __name__ == "__main__":
     # Run on 0.0.0.0 if you want other devices in the network to reach it,

@@ -8,8 +8,8 @@ export async function googleLogin() {
   return res.json();
 }
 
-export async function fetchEmails() {
-  const res = await fetch(`${API_BASE}/api/emails`, {
+export async function fetchEmails(limit = 10) {
+  const res = await fetch(`${API_BASE}/api/emails?limit=${encodeURIComponent(limit)}`, {
     credentials: "include"
   });
   return res.json();
@@ -48,6 +48,16 @@ export async function exportPDF(emails) {
 export async function logout() {
   const res = await fetch(`${API_BASE}/api/logout`, {
     method: "POST",
+    credentials: "include"
+  });
+  return res.json();
+}
+
+export async function analyzeUrl(url) {
+  const res = await fetch(`${API_BASE}/api/url_offline`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url }),
     credentials: "include"
   });
   return res.json();
