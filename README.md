@@ -51,7 +51,7 @@ Built with **Scikit-learn**, **React**, and **Flask**, it can run **offline** or
   - Risk analysis
   - Keyword summary
   - Suspicious URLs
-  - Email statistics
+  - Email statistics.
 
 ### 🧰 Full-Stack Power
 - **React frontend**
@@ -63,7 +63,7 @@ Built with **Scikit-learn**, **React**, and **Flask**, it can run **offline** or
 
 ## 📸 Application Interfaces
 
-*Visual walkthrough of Spamurai’s main interfaces and workflow*
+*Visual walkthrough of Spamurai’s main interfaces and workflow of app*
 
 ---
 
