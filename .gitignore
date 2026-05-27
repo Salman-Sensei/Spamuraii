@@ -1,0 +1,25 @@
+# OS generated files
+.DS_Store
+__MACOSX/
+
+# Node.js / Frontend
+frontend/node_modules/
+frontend/build/
+npm-debug.log
+.env
+
+# Python Environments (Catching all 3 of your venv folders!)
+venv/
+backend/venv/
+frontend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+
+# Machine Learning Models (Too large for standard GitHub)
+backend/models/*.joblib
+*.joblib
+*.pkl
+
+# Secrets and Credentials (CRITICAL: NEVER PUSH THESE)
+backend/client_secret.json

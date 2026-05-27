@@ -1,0 +1,330 @@
+.email-card {
+  background: var(--surface-elevated);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.email-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #e0e0e0 0%, #e0e0e0 100%);
+  transition: all 0.3s ease;
+}
+
+.email-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 40px var(--shadow-strong);
+  border-left-width: 6px;
+}
+
+.email-card.spam {
+  border-left-color: var(--danger);
+}
+
+.email-card.spam::before {
+  background: var(--danger-gradient);
+}
+
+.email-card.ham {
+  border-left-color: var(--success);
+}
+
+.email-card.ham::before {
+  background: var(--success-gradient);
+}
+
+.email-card.high-risk {
+  background: var(--surface);
+  border-left-color: var(--danger);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+}
+
+.email-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.email-meta {
+  flex: 1;
+}
+
+.email-subject {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.email-sender,
+.email-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sender-icon,
+.date-icon {
+  font-size: 1rem;
+}
+
+.classification-badge {
+  flex-shrink: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.spam {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.badge.ham {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.probability-section {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.probability-item {
+  margin-bottom: 1rem;
+}
+
+.probability-item:last-child {
+  margin-bottom: 0;
+}
+
+.probability-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.probability-value {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.progress-fill.spam {
+  background: var(--danger-gradient);
+}
+
+.progress-fill.ham {
+  background: var(--success-gradient);
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.warning-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-left: 4px solid var(--danger);
+  border-radius: 12px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.warning-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.warning-text {
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.suspicious-urls {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #fff7ed;
+  border-radius: 8px;
+  border: 1px solid #fed7aa;
+}
+
+.urls-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #9a3412;
+}
+
+.urls-icon {
+  font-size: 1.2rem;
+}
+
+.urls-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.suspicious-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #fed7aa;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #9a3412;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.suspicious-link:hover {
+  background: #fff7ed;
+  border-color: #fdba74;
+  transform: translateX(4px);
+}
+
+.suspicious-link.invalid {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.link-icon {
+  font-size: 1rem;
+}
+
+.link-domain {
+  font-weight: 600;
+  color: #c2410c;
+}
+
+.link-path {
+  color: #9a3412;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.email-body-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.expand-button {
+  background: #f3f4f6;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #4b5563;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.expand-button:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.email-body-content {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #374151;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .email-header {
+    flex-direction: column;
+  }
+  
+  .email-subject {
+    font-size: 1.1rem;
+  }
+  
+  .classification-badge {
+    align-self: flex-start;
+  }
+}
+
